@@ -1,8 +1,8 @@
 <template>
   <div id="main">
-    <product></product>
-    <product></product>
-    <product></product>
+    <product title="Ciasto Murzynek" picture="/img/birthday_cake.66655a2f.jpg"></product>
+    <product title="Tort Urodzinowy" picture="/img/birthday_cake.66655a2f.jpg"></product>
+    <product title="Ciasteczka Czekoladowe" picture="/img/birthday_cake.66655a2f.jpg"></product>
   </div>
 </template>
 

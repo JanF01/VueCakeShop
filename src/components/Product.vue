@@ -2,17 +2,20 @@
   <div id="product">
     <div class="hero is-primary">
       <div class="hero-body">
-        <h1 class="subtitle">Cake</h1>
+        <h1 class="subtitle">{{ title }}</h1>
       </div>
+      <img :src="picture" />
     </div>
   </div>
 </template>
 
-
 <script>
 export default {
   name: "product",
-  props: {}
+  props: {
+    title: String,
+    picture: String
+  }
 };
 </script>
 
