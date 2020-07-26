@@ -11,11 +11,18 @@
             <h1 class="subtitle">Bakery</h1>
           </a>
           <a class="navbar-item"></a>
-          <span class="navbar-burger burger" data-target="navbarMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+          <div
+            role="button"
+            aria-label="navbarMenu"
+            aria-expanded="false"
+            class="navbar-burger burger"
+            data-target="navbarMenu"
+            @click="activateMenu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </div>
         </div>
         <div id="navbarMenu" class="navbar-menu">
           <div class="navbar-end">
@@ -26,7 +33,14 @@
               />
             </a>
             <a class="navbar-item is-active">Home</a>
-            <a class="navbar-item">Categories</a>
+            <a class="navbar-item has-dropdown is-hoverable categories" @click="toggleCategories">
+              <a class="navbar-link">Categories</a>
+              <div class="navbar-dropdown is-primary">
+                <a class="navbar-item">Fruit Cakes</a>
+                <a class="navbar-item">Chocolate Cakes</a>
+                <a class="navbar-item">Cookies</a>
+              </div>
+            </a>
             <a class="navbar-item">Contact us</a>
           </div>
         </div>
@@ -46,13 +60,26 @@
 <script>
 export default {
   name: "navigation",
-  props: {}
+  props: {},
+  methods: {
+    activateMenu() {
+      document.querySelector(".burger").classList.toggle("is-active");
+      document.querySelector("#navbarMenu").classList.toggle("is-active");
+    },
+    toggleCategories() {
+      document.querySelector(".categories").classList.toggle("is-active");
+    }
+  }
 };
 </script>
 
 <style scoped lang="scss">
 .navbar {
   box-shadow: 0 0.15em 0.6em 0 rgba(73, 73, 73, 0.301);
+}
+
+.burger {
+  z-index: 5;
 }
 .navbar-item {
   img {
@@ -62,6 +89,20 @@ export default {
     color: white;
     font-size: 1.5em;
     margin: 0.14em 0 0 0.2em;
+  }
+  .navbar-dropdown {
+    border-radius: 0.4em;
+    font-size: 1.05em;
+  }
+  &.has-dropdown {
+    .navbar-dropdown {
+      display: none;
+    }
+    &.is-active {
+      .navbar-dropdown {
+        display: block;
+      }
+    }
   }
 }
 .hero {
